@@ -40,4 +40,4 @@ jobs:
           git add .
           git commit -m "Publish"
           git pull
-          git push origin master
+          git push origin main
