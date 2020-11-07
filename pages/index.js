@@ -1,8 +1,15 @@
 import Link from "next/link";
+import Image from 'next/image'
 
 const Home = ({ posts }) => {
   return (
     <div>
+      <Image
+        src="/britania.jpg"
+        alt="Picture of the author"
+        width={500}
+        height={500}
+      />
       <h2>最新の記事</h2>
       <div>
         {posts.map((blog) => (
