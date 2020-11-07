@@ -7,7 +7,7 @@ const Home = ({ posts }) => {
       <div>
         {posts.map((blog) => (
           <div key={blog.id}>
-            <Link href="/posts/[id]" as={`posts/${blog.id}`}>
+            <Link href="./posts/[id]" as={`./posts/${blog.id}`}>
               <a>
                 <h2>{blog.title}</h2>
               </a>
