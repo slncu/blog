@@ -10,34 +10,44 @@ on:
   
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+# jobs:
+#   # This workflow contains a single job called "build"
+#   build:
+#     # The type of runner that the job will run on
+#     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
+#     # Steps represent a sequence of tasks that will be executed as part of the job
+#     steps:
+      
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      # - uses: actions/checkout@v2
 
-      - name: setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - name: install modules
-        run: npm install
-      - name: export to docs
-        run: npm run export
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
-      - name: git setting
-        run: |
-          git config --local user.email "braundrot.s@gmail.com"
-          git config --local user.name "slncu"
-      - name: Commit files
-        run: |
-          git add .
-          git commit -m "Publish"
-          git pull
-          git push origin main
+      # - name: setup node
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: '14.x'
+      # - name: install modules
+      #   run: npm install
+      # - name: export to docs
+      #   run: npm run export
+      #   env:
+      #     API_KEY: ${{ secrets.API_KEY }}
+      # - name: git setting
+      #   run: |
+      #     git config --local user.email "braundrot.s@gmail.com"
+      #     git config --local user.name "slncu"
+      # - name: Commit files
+      #   run: |
+      #     git add .
+      #     git commit -m "Publish"
+      #     git pull
+      #     git push origin main
+
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+    - name: curl
+      uses: wei/curl@master
+      with:
+        args: -X POST ${{ secrets.VERCEL_NOW_DEPLOY_URI }}
